@@ -57,7 +57,7 @@ public class Register extends Fragment{
                 {
                     Toast.makeText(getActivity(),"please enter your username",Toast.LENGTH_LONG).show();
                 }
-                else if (email.equals("")){
+                else if (Email.equals("")){
                     Toast.makeText(getActivity(),"please enter your email",Toast.LENGTH_LONG).show();
                 }
                 else if (password.equals("")){

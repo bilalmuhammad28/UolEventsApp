@@ -41,15 +41,31 @@ public class Login extends Fragment {
         user = (EditText) view.findViewById(R.id.user);
         pass = (EditText) view.findViewById(R.id.pass);
 
-
+        Jsonparser j=new Jsonparser();
+        try {
+                String[] arr=new String[2];
+            arr[1]="{\"email\":\"tooba@gmail.om\",\"password\":\"123456\"}";
+            arr[0]="http://192.168.10.5:8000/login";
+            j.makePostRequest(arr);
+            System.out.println(j.getResponseArray());
+        }
+        catch (Exception e)
+        {
+            System.out.println("I am in Eception");
+        }
         log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String username = user.getText().toString().trim();
                 String password = pass.getText().toString().trim();
-                if (username.equals("") && password.equals("")) {
-                    Toast.makeText(getActivity(), "please enter ur username and password", Toast.LENGTH_LONG).show();
+                if (username.equals("bilal") && password.equals("123")) {
+
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    Home f = new Home();
+                    fragmentTransaction.replace(R.id.main_frame, f);
+                    fragmentTransaction.commit();
 
                 } else if (username.isEmpty()) {
                     Toast.makeText(getActivity(), "please enter your username", Toast.LENGTH_LONG).show();
